@@ -1,0 +1,26 @@
+{
+  "shop_info": {
+    "name": "ABC store",
+    "location": "Tokyo"
+  },
+  "items": [
+    {
+      "name": "White T-shirts",
+      "description": "Good Item",
+      "price": 500,
+      "tax": 1.1
+    },
+    {
+      "name": "Blue Shoes",
+      "description": "Bad Item",
+      "price": 20000,
+      "tax": 1.1
+    },
+    {
+      "name": "Interesting books",
+      "description": "Good Item",
+      "price": 1220,
+      "tax": 1.1
+    }
+  ]
+}
