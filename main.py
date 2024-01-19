@@ -1,25 +1,18 @@
 from fastapi import FastAPI
 from typing import Optional
+from pydantic import BaseModel
+
+class Item(BaseModel):
+  # データ構造を明記
+  name: str
+  description: Optional[str] = None
+  price: int
+  tax: Optional[float] = None
+
 
 # インスタンス化
 app = FastAPI()
 
-# HTTPメソッドのGETで"/"にアクセスがあったら、その下の関数を処理する
-# @app.get("/") # パスオペレーション
-# async def index():
-#   return {"message": "Hello World"}
-
-# @app.get("/countries/") 
-# async def country(country_name: str = 'Japan', country_no: int = 1):
-#   return {
-#     "country_name": country_name,
-#     "country_no": country_no,
-#   }
-
-@app.get("/countries/") 
-async def country(country_name: Optional[str] = None, country_no: Optional[int] = None):
-  return {
-    "country_name": country_name,
-    "country_no": country_no,
-  }
-
+@app.post("/item/")
+async def create_item(item: Item):
+  return {"message": f"{item.name}は税込価格{int(item.price * item.tax)}円です"}
